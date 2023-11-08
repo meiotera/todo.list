@@ -1,5 +1,5 @@
 module.exports = class TodoController {
   static showTodo(req, res) {
-    res.render("partials/home");
+    res.render("partials/todo");
   }
 };
