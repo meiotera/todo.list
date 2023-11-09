@@ -1,5 +1,9 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
+const conexao = require("./db/conexao");
+
+const TodoModel = require("./models/TodoModel");
+const todoRoute = require("./routes/todoRoute");
 
 const app = express();
 
@@ -20,7 +24,13 @@ app.use(express.static("public"));
 // import Controllers
 const TodoController = require("./controllers/TodoController");
 
+app.use("/todo", todoRoute);
 // app.use("/")
 app.get("/", TodoController.showTodo);
 
-app.listen(3000);
+conexao
+  .sync()
+  .then(() => {
+    app.listen(3000);
+  })
+  .catch((error) => console.log(error));
