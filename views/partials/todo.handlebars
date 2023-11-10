@@ -7,3 +7,14 @@
           <input type="submit" value="Criar Tarefa">
     </form>
 </section>
+
+<section>
+    {{#each resultData}}
+        <div class="container-todo">
+            <p>{{this.title}}</p>
+            <div class="info">
+                <p>{{this.dataDeCriacao}}</p>
+            </div>
+        </div>
+    {{/each}}
+</section>
