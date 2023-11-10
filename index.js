@@ -1,6 +1,8 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const conexao = require("./db/conexao");
+const session = require("express-session");
+const flash = require("express-flash");
 
 const TodoModel = require("./models/TodoModel");
 const todoRoute = require("./routes/todoRoute");
@@ -18,6 +20,16 @@ app.use(
     extended: true,
   })
 );
+
+// session midleware
+// Configuração do middleware de sessão
+app.use(session({
+  secret: "seuSegredo",
+  resave: false,
+  saveUninitialized: true,
+}));
+
+app.use(flash());
 app.use(express.json());
 app.use(express.static("public"));
 
