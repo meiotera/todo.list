@@ -10,6 +10,14 @@
         <h1>Todo</h1>
     </header>
 
+    {{#if messages.message}}
+        <div class="container">
+            {{#each messages.message}}
+                <p>{{this}}</p>
+            {{/each}}
+        </div>
+    {{/if}}
+
     {{{body}}}
 </body>
 </html>
