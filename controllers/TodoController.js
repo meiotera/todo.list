@@ -13,7 +13,7 @@ module.exports = class TodoController {
       const dia = todo.createdAt.getDate();
       const mes = todo.createdAt.getMonth();
       const dataDeCriacao = `${dia}/${mes}/${ano}`;
-    
+
       return {
         title: todo.title,
         concluded: todo.concluded,
@@ -26,8 +26,9 @@ module.exports = class TodoController {
 
   static async createTodoPost(req, res) {
     if (req.body.title === "") {
+      req.flash("message", "Nao pode estar em branco");
       res.redirect("/");
-      return
+      return;
     }
 
     const todo = {
