@@ -1,20 +1,27 @@
 <section class="section-input">
-    <form action="/todo/add" method="post">
-        <div class="form-control">
-            <label for="title">Tarefa:</label>
-            <input type="text" name="title" id="title" placeholder="Digite sua tarefa...">
-        </div>
-          <input class="button" type="submit" value="Criar Tarefa">
-    </form>
+  <form action="/todo/add" method="post">
+    <div class="form-control">
+      <label for="title">Tarefa:</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Digite sua tarefa..."
+      />
+    </div>
+    <input class="button" type="submit" value="Criar Tarefa" />
+  </form>
 </section>
 
 <section class="section-todo">
-    {{#each resultData}}
-        <div class="container-todo">
-            <p>{{this.title}}</p>
-            <div class="info">
-                <p>{{this.dataDeCriacao}}</p>
-            </div>
-        </div>
-    {{/each}}
+  {{#each resultData}}
+    <div class="container-todo">
+      <p>{{this.title}}</p>
+      <div class="info">
+        <p>{{this.dataDeCriacao}}</p>
+        <button><i class="bi bi-check2-circle"></i></button>
+        <button><i class="bi bi-x-circle-fill"></i></button>
+      </div>
+    </div>
+  {{/each}}
 </section>
