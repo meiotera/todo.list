@@ -16,11 +16,29 @@
 <section class="section-todo">
   {{#each resultData}}
     <div class="container-todo">
-      <p>{{this.title}}</p>
+      <div class="title">
+        <p>{{this.title}}</p>
+
+      </div>
       <div class="info">
         <p>{{this.dataDeCriacao}}</p>
-        <button><i class="bi bi-check2-circle"></i></button>
-        <button><i class="bi bi-x-circle-fill"></i></button>
+
+        <form action="/todo/concluido" method="post">
+          <input type="hidden" name="id" value="{{this.id}}" />
+
+          <button type="submit" class="check">
+            {{#if this.concluded}}
+              <i class="bi bi-check2-circle concluded"></i>
+            {{else}}
+              <i class="bi bi-check2-circle"></i>
+            {{/if}}
+
+          </button>
+          <button type="submit" class="del"><i
+              class="bi bi-x-circle-fill"
+            ></i></button>
+
+        </form>
       </div>
     </div>
   {{/each}}
