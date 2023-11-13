@@ -11,7 +11,7 @@ module.exports = class TodoController {
 
       const ano = todo.createdAt.getFullYear();
       const dia = todo.createdAt.getDate();
-      const mes = todo.createdAt.getMonth();
+      const mes = todo.createdAt.getMonth() + 1;
       const dataDeCriacao = `${dia}/${mes}/${ano}`;
 
       return {
