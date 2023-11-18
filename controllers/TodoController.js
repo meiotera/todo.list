@@ -29,7 +29,7 @@ module.exports = class TodoController {
   static async createTodoPost(req, res) {
     if (req.body.title === "") {
       req.flash("message", "Nao pode estar em branco");
-      res.redirect("/");
+      res.redirect("/todo");
       return;
     }
 
@@ -40,7 +40,7 @@ module.exports = class TodoController {
 
     try {
       await TodoModel.create(todo);
-      res.redirect("/");
+      res.redirect("/todo");
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +58,7 @@ module.exports = class TodoController {
       await TodoModel.update(todos, { where: { id: id } });
 
       req.flash("message", "Concluido");
-      res.redirect("/");
+      res.redirect("/todo");
     } catch (error) {
       console.log(error);
     }

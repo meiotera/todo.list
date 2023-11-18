@@ -6,6 +6,7 @@ const flash = require("express-flash");
 
 const TodoModel = require("./models/TodoModel");
 const todoRoute = require("./routes/todoRoute");
+const autRouter = require("./routes/autRouter");
 
 const app = express();
 
@@ -23,11 +24,13 @@ app.use(
 
 // session midleware
 // Configuração do middleware de sessão
-app.use(session({
-  secret: "seuSegredo",
-  resave: false,
-  saveUninitialized: true,
-}));
+app.use(
+  session({
+    secret: "seuSegredo",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.use(flash());
 app.use(express.json());
@@ -36,9 +39,11 @@ app.use(express.static("public"));
 // import Controllers
 const TodoController = require("./controllers/TodoController");
 
+app.use("/", autRouter);
+app.get("/todo", TodoController.showTodo)
 app.use("/todo", todoRoute);
 // app.use("/")
-app.get("/", TodoController.showTodo);
+// app.get("/", TodoController.showTodo);
 
 conexao
   .sync()

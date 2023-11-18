@@ -1,19 +1,19 @@
-const { Datatypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const db = require("../db/conexao");
 
 const User = db.define("User", {
   name: {
-    type: Datatypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
     require: true,
   },
   email: {
-    type: Datatypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
     require: true,
   },
   password: {
-    type: Datatypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
     require: true,
   },

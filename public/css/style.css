@@ -32,19 +32,19 @@ section {
   margin-top: -10em;
 }
 
-.section-input .form-control {
+.form-control {
   min-width: 100%;
   margin-bottom: 1.5em;
 }
 
-.section-input .form-control label {
+.form-control label {
   display: block;
   font-size: 1.3em;
   margin-bottom: 0.3em;
   font-weight: bold;
 }
 
-.section-input .form-control input {
+.form-control input {
   width: 100%;
   padding: 10px;
   font-size: 1.2em;
@@ -110,7 +110,7 @@ section {
   color: rgba(255, 1, 1, 0.87);
 }
 
-.info .check .concluded{
+.info .check .concluded {
   color: green;
 }
 
@@ -151,4 +151,16 @@ section {
 
 .container-todo p {
   font-size: 1.5em;
+}
+
+/* authenticator */
+.authenticator {
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
+}
+
+.authenticator div {
+  width: 50%;
+  margin: 1em;
 }
