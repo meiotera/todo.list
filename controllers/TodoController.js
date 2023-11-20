@@ -1,28 +1,21 @@
 const TodoModel = require("../models/TodoModel");
+const User = require("../models/User");
 
 module.exports = class TodoController {
   static async showTodo(req, res) {
-    const todoData = await TodoModel.findAll({
-      attributes: ["title", "concluded", "createdAt", "id"],
+    const userId = req.session.userid;
+
+    const user = await User.findOne({
+      where: {
+        id: userId,
+      },
+
+      include: TodoModel,
+      plain: true,
     });
 
-    const resultData = todoData.map((data) => {
-      let todo = data.dataValues;
+    const resultData = user.Todos.map((result) => result.dataValues);
 
-      const ano = todo.createdAt.getFullYear();
-      const dia = todo.createdAt.getDate();
-      const mes = todo.createdAt.getMonth() + 1;
-      const dataDeCriacao = `${dia}/${mes}/${ano}`;
-
-      return {
-        id: todo.id,
-        title: todo.title,
-        concluded: todo.concluded,
-        dataDeCriacao,
-      };
-    });
-
-    console.log(resultData)
     res.render("partials/todo", { resultData });
   }
 
@@ -35,12 +28,15 @@ module.exports = class TodoController {
 
     const todo = {
       title: req.body.title,
+      UserId: req.session.userid,
       concluded: false,
     };
 
     try {
       await TodoModel.create(todo);
-      res.redirect("/todo");
+      req.session.save(() => {
+        res.redirect("/todo");
+      });
     } catch (error) {
       console.log(error);
     }

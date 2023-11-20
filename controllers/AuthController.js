@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
@@ -54,9 +53,13 @@ module.exports = class AuthController {
     try {
       const createdUser = await User.create(user);
 
+      req.session.userid = createdUser.id;
+
       req.flash("message", "cadastro realizado!");
 
-      res.redirect("/todo");
+      req.session.save(() => {
+        res.redirect("/todo");
+      });
     } catch (error) {
       console.log(error);
     }
@@ -83,6 +86,10 @@ module.exports = class AuthController {
       return;
     }
 
-    res.redirect("/todo");
+    req.session.userid = user.id;
+
+    req.session.save(() => {
+      res.redirect("/todo");
+    });
   }
 };

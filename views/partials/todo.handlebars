@@ -13,8 +13,9 @@
   </form>
 </section>
 
-<section class="section-todo">
-  {{#each resultData}}
+{{#each resultData}}
+  <section class="section-todo">
+
     <div class="container-todo">
       <div class="title">
         <p>{{this.title}}</p>
@@ -41,5 +42,5 @@
         </form>
       </div>
     </div>
-  {{/each}}
-</section>
+  </section>
+{{/each}}

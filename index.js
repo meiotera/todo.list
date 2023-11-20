@@ -32,6 +32,14 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  if (req.session.userid) {
+    res.locals.session = req.session;
+  }
+
+  next();
+});
+
 app.use(flash());
 app.use(express.json());
 app.use(express.static("public"));
@@ -40,12 +48,13 @@ app.use(express.static("public"));
 const TodoController = require("./controllers/TodoController");
 
 app.use("/", autRouter);
-app.get("/todo", TodoController.showTodo)
 app.use("/todo", todoRoute);
+app.get("/todo", TodoController.showTodo);
 // app.use("/")
 // app.get("/", TodoController.showTodo);
 
 conexao
+  // .sync({force: true})
   .sync()
   .then(() => {
     app.listen(3000);
