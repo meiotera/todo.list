@@ -15,14 +15,17 @@
         <h1>TODO.list</h1>
     </header>
 
-    {{#if messages.message}}
-        <div class="container">
-            {{#each messages.message}}
-                <p>{{this}}</p>
-            {{/each}}
-        </div>
-    {{/if}}
+    <div class="container-alert">
+        {{#if messages.message}}
+            <div class="alert">
+                {{#each messages.message}}
+                    <p>{{this}}</p>
+                {{/each}}
+            </div>
+        {{/if}}
+    </div>
 
     {{{body}}}
+    
 </body>
 </html>

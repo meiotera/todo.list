@@ -1,4 +1,29 @@
-<section class="authenticator">
+<section class="authenticator"> 
+ 
+  <div class="enterAccount">
+    <form action="/loginPost" method="post">
+      <div class="form-control">
+        <label for="loginEmail">E-mail:</label>
+        <input
+          type="email"
+          name="loginEmail"
+          id="loginEmail"
+          placeholder="Digite seu E-mail"
+        />
+      </div>
+      <div class="form-control">
+        <label for="loginPassword">Senha:</label>
+        <input
+          type="password"
+          name="loginPassword"
+          id="loginPassword"
+          placeholder="Digite sua Senha"
+        />
+      </div>
+      <input type="submit" class="button" value="Entrar" />
+    </form>
+  </div>
+
   <div class="createAccount">
     <form action="/accountPost" method="post">
       <div class="form-control">
@@ -37,31 +62,7 @@
           placeholder="Digite Confirme sua senha"
         />
       </div>
-      <input type="submit" value="Criar Conta" />
-    </form>
-  </div>
-  <hr />
-  <div class="enterAccount">
-    <form action="/loginPost" method="post">
-      <div class="form-control">
-        <label for="loginEmail">E-mail:</label>
-        <input
-          type="email"
-          name="loginEmail"
-          id="loginEmail"
-          placeholder="Digite seu E-mail"
-        />
-      </div>
-      <div class="form-control">
-        <label for="loginPassword">Senha:</label>
-        <input
-          type="password"
-          name="loginPassword"
-          id="loginPassword"
-          placeholder="Digite sua Senha"
-        />
-      </div>
-      <input type="submit" value="Entrar" />
+      <input type="submit" class="button" value="Criar Conta" />
     </form>
   </div>
 </section>
