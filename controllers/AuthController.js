@@ -92,4 +92,9 @@ module.exports = class AuthController {
       res.redirect("/todo");
     });
   }
+
+  static logout(req, res) {
+    req.session.destroy();
+    res.redirect("/");
+  }
 };

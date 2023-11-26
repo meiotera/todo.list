@@ -13,6 +13,10 @@
 <body>
     <header class="topo">
         <h1>TODO.list</h1>
+
+        {{#if session.userid}}        
+          <li><a href="/logout">Sair</a></li>
+        {{/if}}
     </header>
 
     <div class="container-alert">

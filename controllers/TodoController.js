@@ -48,8 +48,7 @@ module.exports = class TodoController {
     const todos = {
       concluded: true,
     };
-
-    console.log(todos);
+   
     try {
       await TodoModel.update(todos, { where: { id: id } });
 

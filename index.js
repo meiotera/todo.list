@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const conexao = require("./db/conexao");
 const session = require("express-session");
+
 const flash = require("express-flash");
 
 const TodoModel = require("./models/TodoModel");
@@ -50,8 +51,10 @@ const TodoController = require("./controllers/TodoController");
 app.use("/", autRouter);
 app.use("/todo", todoRoute);
 app.get("/todo", TodoController.showTodo);
-// app.use("/")
-// app.get("/", TodoController.showTodo);
+
+app.use((req, res, next) => {
+  res.status(404).render("partials/error404");
+});
 
 conexao
   // .sync({force: true})
