@@ -20,6 +20,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.topo .logout {
+  margin-top: 25px;
+
+}
+
+.topo .logout a{
+  color: #f00a0a;
+  font-weight: bold;
+  text-decoration: none;  
 }
 
 /* Mensagens de alerta */
